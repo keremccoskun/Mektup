@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Bir Mektubun Var</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ffb6c1, #ffe4e1);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.container {
+    text-align: center;
+    padding-top: 40px;
+    width: 100%;
+}
+
+/* BAŞLIK */
+h1 {
+    color: #b30059;
+    margin-bottom: 20px;
+}
+
+/* ZARF ALANI */
+.envelope-wrapper {
+    height: 200px;
+    transition: 0.6s ease;
+}
+
+/* ZARF */
+.envelope {
+    width: 300px;
+    height: 180px;
+    background: #ff5e7e;
+    border-radius: 16px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+/* KAPAK */
+.envelope-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    border-top: 90px solid #ff7a95;
+    transform-origin: top;
+    transition: transform 0.8s ease;
+}
+
+/* AÇILMA */
+.envelope.open .envelope-flap {
+    transform: rotateX(180deg);
+}
+
+/* ZARF TAMAMEN GİTSİN */
+.envelope-wrapper.hide {
+    display: none;
+}
+
+/* BUTON */
+button {
+    margin: 12px auto 0;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 25px;
+    background: #ff3366;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    display: block;
+}
+
+/* MEKTUP */
+.letter {
+    width: 320px;
+    background: white;
+    border-radius: 18px;
+    padding: 24px;
+    margin: 10px auto 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.6s ease;
+}
+
+/* MEKTUP GÖRÜNSÜN */
+.letter.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.letter h2 {
+    margin-top: 0;
+}
+
+.photo {
+    width: 100%;
+    border-radius: 12px;
+    margin-top: 12px;
+}
+
+.player {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #800033;
+}
+
+/* KALPLER */
+.heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 22px;
+    animation: fly 4s linear forwards;
+}
+
+@keyframes fly {
+    from { transform: translateY(0); opacity: 1; }
+    to   { transform: translateY(-100vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>💌 Selam sana keroştan bir mektup var</h1>
+
+    <!-- ZARF + BUTON (AYNI BLOKTA) -->
+    <div class="envelope-wrapper" id="envWrap">
+        <div class="envelope" id="envelope">
+            <div class="envelope-flap"></div>
+        </div>
+        <button id="openBtn">Mektubu Aç</button>
+    </div>
+
+    <!-- MEKTUP (BAŞLIĞIN HEMEN ALTINDA KALIR) -->
+    <div class="letter" id="letter">
+        <h2>SEVGİLİLER GÜNÜMÜZ KUTLU OLSUN BİTANEM ❤️</h2>
+        <img src="foto.jpg" class="photo">
+        <div class="player">
+            🎵 Şu an çalıyor: <b>Canozan – Toprak Yağmura</b>
+        </div>
+    </div>
+
+    <audio id="music">
+        <source src="canozan.mp3" type="audio/mpeg">
+    </audio>
+
+</div>
+
+<script>
+const btn = document.getElementById("openBtn");
+const envelope = document.getElementById("envelope");
+const envWrap = document.getElementById("envWrap");
+const letter = document.getElementById("letter");
+const music = document.getElementById("music");
+
+btn.addEventListener("click", () => {
+    envelope.classList.add("open");
+    music.play();
+    hearts();
+
+    setTimeout(() => {
+        envWrap.classList.add("hide");
+        letter.classList.add("show");
+    }, 800);
+});
+
+function hearts() {
+    for (let i = 0; i < 20; i++) {
+        setTimeout(() => {
+            const h = document.createElement("div");
+            h.className = "heart";
+            h.innerHTML = "❤️";
+            h.style.left = Math.random() * 100 + "vw";
+            document.body.appendChild(h);
+            setTimeout(() => h.remove(), 4000);
+        }, i * 150);
+    }
+}
+</script>
+
+</body>
+</html>
