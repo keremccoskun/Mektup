@@ -213,7 +213,9 @@ const music = document.getElementById("music");
 
 btn.addEventListener("click", () => {
     envelope.classList.add("open");
-    music.play();
+    music.currentTime = 23;
+music.play();
+
     hearts();
 
     setTimeout(() => {
@@ -238,6 +240,7 @@ function hearts() {
 
 </body>
 </html>
+
 
 
 
