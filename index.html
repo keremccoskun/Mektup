@@ -27,9 +27,9 @@ body {
 }
 
 h1 {
-  color: #b30059;
-  margin-bottom: 20px;
-  font-size: 18px !important;
+    color: #b30059;
+    margin-bottom: 20px;
+    font-size: 18px;
 }
 
 .envelope-wrapper {
@@ -157,7 +157,6 @@ button {
     <div class="letter" id="letter">
         <h2>🫠🫶🏽</h2>
 
-        
         <div class="slider">
             <span class="arrow left" id="prev">‹</span>
             <img src="foto1.jpg" class="photo" id="sliderImage">
@@ -227,9 +226,7 @@ document.getElementById("prev").onclick = () => {
     index = (index - 1 + images.length) % images.length;
     sliderImage.src = images[index];
 };
-
-
+</script>
 
 </body>
 </html>
-
