@@ -27,9 +27,9 @@ body {
 }
 
 h1 {
-    color: #b30059;
-    margin-bottom: 20px;
-    font-size: 18px;
+  color: #b30059;
+  margin-bottom: 20px;
+  font-size: 18px !important;
 }
 
 .envelope-wrapper {
@@ -96,8 +96,10 @@ button {
     transform: translateY(0);
 }
 
-.letter h2 {
-    margin-top: 0;
+.photo {
+    width: 100%;
+    border-radius: 12px;
+    margin-top: 12px;
 }
 
 
@@ -106,27 +108,18 @@ button {
     margin-top: 12px;
 }
 
-.slider img {
-    width: 100%;
-    border-radius: 12px;
-}
-
-.nav {
+.arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(255, 51, 102, 0.9);
-    border: none;
-    color: white;
-    font-size: 22px;
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
+    font-size: 34px;
+    color: #ff3366;
     cursor: pointer;
+    user-select: none;
 }
 
-.nav.left { left: -10px; }
-.nav.right { right: -10px; }
+.arrow.left { left: -10px; }
+.arrow.right { right: -10px; }
 
 .player {
     margin-top: 10px;
@@ -143,7 +136,7 @@ button {
 
 @keyframes fly {
     from { transform: translateY(0); opacity: 1; }
-    to { transform: translateY(-100vh); opacity: 0; }
+    to   { transform: translateY(-100vh); opacity: 0; }
 }
 </style>
 </head>
@@ -166,9 +159,9 @@ button {
 
         
         <div class="slider">
-            <button class="nav left" id="prev">‹</button>
-            <img id="sliderImage" src="foto1.jpg">
-            <button class="nav right" id="next">›</button>
+            <span class="arrow left" id="prev">‹</span>
+            <img src="foto1.jpg" class="photo" id="sliderImage">
+            <span class="arrow right" id="next">›</span>
         </div>
 
         <div class="player">
@@ -194,13 +187,11 @@ btn.addEventListener("click", () => {
     music.currentTime = 24;
     music.play();
     hearts();
-
     setTimeout(() => {
         envWrap.classList.add("hide");
         letter.classList.add("show");
     }, 800);
 });
-
 
 function hearts() {
     for (let i = 0; i < 20; i++) {
@@ -236,8 +227,12 @@ document.getElementById("prev").onclick = () => {
     index = (index - 1 + images.length) % images.length;
     sliderImage.src = images[index];
 };
+
+setInterval(() => {
+    index = (index + 1) % images.length;
+    sliderImage.src = images[index];
+}, 3000);
 </script>
 
 </body>
 </html>
-
