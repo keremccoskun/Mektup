@@ -102,7 +102,6 @@ button {
     margin-top: 12px;
 }
 
-
 .slider {
     position: relative;
     margin-top: 12px;
@@ -137,6 +136,45 @@ button {
 @keyframes fly {
     from { transform: translateY(0); opacity: 1; }
     to   { transform: translateY(-100vh); opacity: 0; }
+}
+
+/* 🔥 MOBİL DÜZEN (EKLENEN TEK KISIM) */
+@media (max-width: 600px) {
+
+    h1 {
+        font-size: 22px;
+        margin-bottom: 18px;
+    }
+
+    .envelope {
+        width: 340px;
+        height: 200px;
+    }
+
+    .envelope-flap {
+        border-left: 170px solid transparent;
+        border-right: 170px solid transparent;
+        border-top: 100px solid #ff7a95;
+    }
+
+    button {
+        font-size: 17px;
+        padding: 12px 34px;
+    }
+
+    .letter {
+        width: 88vw;
+        max-width: 400px;
+        padding: 26px;
+    }
+
+    .letter h2 {
+        font-size: 20px;
+    }
+
+    .player {
+        font-size: 15px;
+    }
 }
 </style>
 </head>
@@ -204,7 +242,6 @@ function hearts() {
         }, i * 150);
     }
 }
-
 
 const images = [
     "foto1.jpg",
