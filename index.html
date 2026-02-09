@@ -26,20 +26,16 @@ body {
     width: 100%;
 }
 
-
 h1 {
-  color: #b30059;
-  margin-bottom: 20px;
-  font-size: 18px !important;
+    color: #b30059;
+    margin-bottom: 20px;
+    font-size: 18px;
 }
-
-
 
 .envelope-wrapper {
     height: 200px;
     transition: 0.6s ease;
 }
-
 
 .envelope {
     width: 300px;
@@ -50,7 +46,6 @@ h1 {
     position: relative;
     overflow: hidden;
 }
-
 
 .envelope-flap {
     position: absolute;
@@ -65,16 +60,13 @@ h1 {
     transition: transform 0.8s ease;
 }
 
-
 .envelope.open .envelope-flap {
     transform: rotateX(180deg);
 }
 
-
 .envelope-wrapper.hide {
     display: none;
 }
-
 
 button {
     margin: 12px auto 0;
@@ -88,7 +80,6 @@ button {
     display: block;
 }
 
-
 .letter {
     width: 320px;
     background: white;
@@ -100,7 +91,6 @@ button {
     transition: 0.6s ease;
 }
 
-
 .letter.show {
     opacity: 1;
     transform: translateY(0);
@@ -110,18 +100,39 @@ button {
     margin-top: 0;
 }
 
-.photo {
-    width: 100%;
-    border-radius: 12px;
+
+.slider {
+    position: relative;
     margin-top: 12px;
 }
+
+.slider img {
+    width: 100%;
+    border-radius: 12px;
+}
+
+.nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 51, 102, 0.9);
+    border: none;
+    color: white;
+    font-size: 22px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.nav.left { left: -10px; }
+.nav.right { right: -10px; }
 
 .player {
     margin-top: 10px;
     font-size: 14px;
     color: #800033;
 }
-
 
 .heart {
     position: fixed;
@@ -132,48 +143,8 @@ button {
 
 @keyframes fly {
     from { transform: translateY(0); opacity: 1; }
-    to   { transform: translateY(-100vh); opacity: 0; }
+    to { transform: translateY(-100vh); opacity: 0; }
 }
-    
-@media (max-width: 600px) {
-
-    h1 {
-        font-size: 22px;
-        margin-bottom: 18px;
-    }
-
-    .envelope {
-        width: 340px;
-        height: 200px;
-    }
-
-    .envelope-flap {
-        border-left: 170px solid transparent;
-        border-right: 170px solid transparent;
-        border-top: 100px solid #ff7a95;
-    }
-
-    button {
-        font-size: 17px;
-        padding: 12px 34px;
-    }
-
-    .letter {
-    width: 88vw;        
-    max-width: 400px;   
-    padding: 26px;
-}
-
-
-    .letter h2 {
-        font-size: 20px;
-    }
-
-    .player {
-        font-size: 15px;
-    }
-}
-
 </style>
 </head>
 
@@ -183,7 +154,6 @@ button {
 
     <h1>💌 Selam, sana keroştan bir mektup var 💌</h1>
 
-    
     <div class="envelope-wrapper" id="envWrap">
         <div class="envelope" id="envelope">
             <div class="envelope-flap"></div>
@@ -191,10 +161,16 @@ button {
         <button id="openBtn">Mektubu Aç</button>
     </div>
 
-    
     <div class="letter" id="letter">
         <h2>🫠🫶🏽</h2>
-        <img src="foto.jpg" class="photo">
+
+        <!-- FOTO SLIDER -->
+        <div class="slider">
+            <button class="nav left" id="prev">‹</button>
+            <img id="sliderImage" src="foto1.jpg">
+            <button class="nav right" id="next">›</button>
+        </div>
+
         <div class="player">
             🎵 Şu an çalıyor: <b>Canozan – Toprak Yağmura</b>
         </div>
@@ -216,8 +192,7 @@ const music = document.getElementById("music");
 btn.addEventListener("click", () => {
     envelope.classList.add("open");
     music.currentTime = 24;
-music.play();
-
+    music.play();
     hearts();
 
     setTimeout(() => {
@@ -225,6 +200,7 @@ music.play();
         letter.classList.add("show");
     }, 800);
 });
+
 
 function hearts() {
     for (let i = 0; i < 20; i++) {
@@ -238,23 +214,29 @@ function hearts() {
         }, i * 150);
     }
 }
+
+
+const images = [
+    "foto1.jpg",
+    "foto2.jpg",
+    "foto3.jpg",
+    "foto4.jpg",
+    "foto5.jpg"
+];
+
+let index = 0;
+const sliderImage = document.getElementById("sliderImage");
+
+document.getElementById("next").onclick = () => {
+    index = (index + 1) % images.length;
+    sliderImage.src = images[index];
+};
+
+document.getElementById("prev").onclick = () => {
+    index = (index - 1 + images.length) % images.length;
+    sliderImage.src = images[index];
+};
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
