@@ -24,6 +24,7 @@ body {
     text-align: center;
     padding-top: 40px;
     width: 100%;
+    position: relative;
 }
 
 h1 {
@@ -32,6 +33,24 @@ h1 {
     font-size: 18px;
 }
 
+/* STICKERLAR */
+.sticker {
+    position: absolute;
+    top: 135px;          /* beyaz kartla bitişik */
+    width: 56px;         /* biraz büyük */
+    z-index: 6;
+    pointer-events: none;
+}
+
+.sticker.left {
+    left: 14px;
+}
+
+.sticker.right {
+    right: 14px;
+}
+
+/* ZAR */
 .envelope-wrapper {
     height: 200px;
     transition: 0.6s ease;
@@ -80,6 +99,7 @@ button {
     display: block;
 }
 
+/* MEKTUP */
 .letter {
     width: 320px;
     background: white;
@@ -89,7 +109,6 @@ button {
     opacity: 0;
     transform: translateY(20px);
     transition: 0.6s ease;
-    position: relative; /* 🔹 EKLENDİ */
 }
 
 .letter.show {
@@ -108,6 +127,7 @@ button {
     margin-top: 12px;
 }
 
+/* SLIDER */
 .slider {
     position: relative;
     margin-top: 12px;
@@ -138,29 +158,13 @@ button {
     right: -30px;
 }
 
-/* 🔹 STICKER */
-.sticker {
-    position: absolute;
-    top: 12px;
-    width: 36px;
-    opacity: 0.95;
-    pointer-events: none;
-}
-
-.sticker.left {
-    left: 14px;
-}
-
-.sticker.right {
-    right: 14px;
-}
-
 .player {
     margin-top: 10px;
     font-size: 14px;
     color: #800033;
 }
 
+/* KALPLER */
 .heart {
     position: fixed;
     bottom: -20px;
@@ -181,6 +185,10 @@ button {
 
     <h1>💌 Selam, sana keroştan bir mektup var 💌</h1>
 
+    <!-- STICKERLAR -->
+    <img src="sticker-left.png" class="sticker left">
+    <img src="sticker-right.png" class="sticker right">
+
     <div class="envelope-wrapper" id="envWrap">
         <div class="envelope" id="envelope">
             <div class="envelope-flap"></div>
@@ -189,11 +197,6 @@ button {
     </div>
 
     <div class="letter" id="letter">
-
-        <!-- 🔹 STICKERLAR -->
-        <img src="sticker-left.png" class="sticker left">
-        <img src="sticker-right.png" class="sticker right">
-
         <h2>🫠🫶🏽</h2>
 
         <div class="slider">
