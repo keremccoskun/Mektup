@@ -112,14 +112,28 @@ button {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 34px;
-    color: #ff3366;
+    width: 42px;
+    height: 42px;
+    background: #ff3366;
+    color: white;
+    border-radius: 50%;
+    font-size: 26px;
+    line-height: 42px;
+    text-align: center;
     cursor: pointer;
     user-select: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
-.arrow.left { left: -10px; }
-.arrow.right { right: -10px; }
+
+.arrow.left {
+    left: -22px;
+}
+
+.arrow.right {
+    right: -22px;
+}
+
 
 .player {
     margin-top: 10px;
@@ -230,3 +244,4 @@ document.getElementById("prev").onclick = () => {
 
 </body>
 </html>
+
